@@ -125,7 +125,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# configurações geoip
+YELP_API_KEY = 'g-hr9QS5tGez8mCXlIDS_r5w58tifoHaaHzKf9jH9OVLFPdBNhJvpHP9JvtObQa-iy0DTtnpPMavrWL5zBabAghdRowQuk_n_yll_LDTH1VBkqPIII9A2CoX30-GY3Yx'
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# rota para deslogar do admin e ir direto para pagina index
+LOGOUT_REDIRECT_URL = 'index'
