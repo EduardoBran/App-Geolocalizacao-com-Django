@@ -16,8 +16,8 @@ class IndexView(View):
             if ret:
                 city = ret['city']
         
-        q = request.GET.get('key', None)
-        loc = request.GET.get('loc', None)
+        termo = request.GET.get('key', None) # termo
+        loc = request.GET.get('loc', None) # localidade
         location = city
         
         context = {
@@ -27,9 +27,10 @@ class IndexView(View):
         
         if loc:
             location = loc
-        if q:
-            items = yelp_search(keyword=q, location=location)
+        if termo:
+            items = yelp_search(keyword=termo, location=location)
             context = {
+                'termo': termo,
                 'items': items,
                 'city': location,
                 'busca': True
