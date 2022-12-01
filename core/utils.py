@@ -2,7 +2,7 @@ from random import randint
 
 import requests
 from django.conf import settings
-from django.contrib.gis.geoip2 import GeoIP2, geoip2
+from django.contrib.gis.geoip2 import GeoIP2, GeoIP2Exception
 
 # endereço da plataforma YELP que utilizamos para fazer
 # as buscas com os nossos parâmetros
@@ -30,7 +30,8 @@ def get_client_data():
     
     try:
         return g.city(ip)
-    except geoip2.erros.AddressNotFoundError:
+    
+    except:
         return None
 
 # gerando string separada cada elemento por .

@@ -13,7 +13,8 @@ class IndexView(View):
         # loop até encontrar um ip que tenha nome de cidade (alguns ips gerados aleatoriamente nao retornam nome de cidade)
         while not city:
             ret = get_client_data()
-            city = ret['city']
+            if ret:
+                city = ret['city']
         
         q = request.GET.get('key', None)
         loc = request.GET.get('loc', None)
