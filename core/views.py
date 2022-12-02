@@ -29,6 +29,18 @@ class IndexView(View):
             location = loc
         if termo:
             items = yelp_search(keyword=termo, location=location)
+            
+            # print('\n****************************\n')
+            # print(items['businesses'][0]['id'])
+            
+            # lista = []
+            
+            # for i in items['businesses']:
+            #     lista.append(i['coordinates'])
+            
+            # print(lista)
+            # print('\n****************************\n')
+            
             context = {
                 'termo': termo,
                 'items': items,

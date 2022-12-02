@@ -3,45 +3,45 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12 mt-4 mb-2">
         <form autocomplete="off" action="{% url 'index' %}">
             {% csrf_token %}
 
-            <div class="form-group">
+            <div class="form-group text-center">
                 <h1><a href="{% url 'index' %}">Buscador Django</a></h1>
                 {% comment %} <h4>[{{ city }} {% if country %} - {{ country }} {% endif %}]</h4> {% endcomment %}
             </div>
 
             <div class="form-grup">
-                <input type="text" class="form-control" name="key"
+                <input type="text" class="form-control mb-1" name="key"
                     placeholder="Digite um termo para busca (obrigatório)" required>
-                <small id="keyHelp" class="form-text text-muted">
+                <small id="keyHelp" class="form-text text-muted mb-3">
                     Exemplo: Mexican Foot, Bazilian Foot, Asian Food
                 </small>
             </div>
 
             <div class="form-grup">
-                <input type="text" class="form-control" name="loc" placeholder="Digite uma cidade para efetuar a busca (obrigatório)" required>
-                <small id="keyHelp" class="form-text text-muted">
+                <input type="text" class="form-control mb-1" name="loc" placeholder="Digite uma cidade para efetuar a busca (obrigatório)" required>
+                <small id="keyHelp" class="form-text text-muted mb-3">
                     Exemplo: Vancouver, Madrid, Oslo
                 </small>
             </div>
 
-            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button type="submit" class="btn btn-primary mb-4">Buscar</button>
 
             {% if 'error' in items %}
-                <h1>Nenhum estabelecimento encontrado em {{ city }}</h1>
+                <h1 class="text-center mb-2">Nenhum estabelecimento encontrado em {{ city }}</h1>
 
             {% elif busca and items.businesses|length < 1 %} 
-                <h1>Nada encontrado sobre o termo buscado</h1>
+                <h1 class="text-center mb-2">Nada encontrado sobre o termo buscado</h1>
 
             {% elif city and items %}
-                <h1>Resultado da busca</h1>
+                <h1 class="mb-2">Resultado da busca</h1>
                 
-                <h4>{{ termo }} - {{ city }}</h4>
+                <h5 class="mb-4">{{ termo }} - {{ city }}</h5>
 
                 {% for biz in items.businesses %}
-                    <span class="text-info">
+                    <span class="text-info" id='city{{forloop.counter}}'>
                         {{ biz.name}}, {{ city }}
                     </span>
                     <br />
