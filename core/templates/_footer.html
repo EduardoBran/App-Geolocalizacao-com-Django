@@ -1,0 +1,111 @@
+{% load static %}
+
+<style>
+    /* estrutura */
+    .site-footer {
+        padding: 10px 0px;
+        font-size: .9rem;
+        line-height: 30px;
+        box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .mTop {
+        margin-top: 5px;
+    }
+
+    /* texto */
+    .copyright-text {
+        margin: 0;
+    }
+
+    .copyright-text label a {
+        font-size: 1.2rem;
+        color: #fff;
+        margin-right: 10px;
+        font-weight: 499;
+    }
+
+    /* icone rede social */
+    .copyright-text a {
+        font-size: 1.25rem;
+        color: #fff;
+        margin: 0px 7px;
+    }
+
+    .copyright-text a:active,
+    .copyright-text a:focus,
+    .copyright-text a:hover {
+        color: #8A847F;
+        text-decoration: none;
+    }
+
+    /* responsivo */
+    @media (max-width:991px) {
+        .site-footer [class^=col-] {
+            margin-bottom: 30px
+        }
+    }
+
+    @media (max-width:767px) {
+        .site-footer {
+            padding-bottom: 0
+        }
+
+        .site-footer .copyright-text {
+            text-align: center
+        }
+    }
+
+    @media (max-width:500px) {
+        .site-footer {
+            padding-top: 2px;
+            font-size: 1.1rem;
+        }
+
+        .mTop {
+            margin-top: 28px;
+        }
+
+        .copyright-text label {
+            font-size: 1.2rem;
+        }
+
+        .copyright-text a {
+            font-size: 1.15rem;
+            margin: 0px 7px;
+        }
+    }
+</style>
+
+<footer class="site-footer bg-dark">
+
+    <div class="container">
+        <div class="row mTop">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="copyright-text text-center">
+                    <label><a href="{% url 'index' %}">By Eduardo Brandão</a></label>
+                    <a href="https://github.com/EduardoBran?tab=repositories" target="_blank" title="acessar github">
+                        <i class="fa-brands fa-github fa-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/eduardombrandao/" target="_blank" title="acessar linkedin">
+                        <i class="fa-brands fa-linkedin fa-lg"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- carregando ícones -->
+<script src="https://kit.fontawesome.com/979f4dc9a1.js" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
