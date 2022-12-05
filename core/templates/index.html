@@ -2,13 +2,19 @@
 
 {% block content %}
 
+<style>
+    h3 {
+        color: #646465;
+    }
+</style>
+
 <div class="row">
     <div class="col-sm-12 mt-4 mb-2">
         <form autocomplete="off" action="{% url 'index' %}">
             {% csrf_token %}
 
-            <div class="form-group text-center">
-                <h1><a href="{% url 'index' %}">Buscador Django</a></h1>
+            <div class="form-group text-center mb-5">
+                <h3>Faça sua busca e confira no mapa abaixo</h3>
                 {% comment %} <h4>[{{ city }} {% if country %} - {{ country }} {% endif %}]</h4> {% endcomment %}
             </div>
 
@@ -21,40 +27,47 @@
             </div>
 
             <div class="form-grup">
-                <input type="text" class="form-control mb-1" name="loc" placeholder="Digite uma cidade para efetuar a busca (obrigatório)" required>
+                <input type="text" class="form-control mb-1" name="loc"
+                    placeholder="Digite uma cidade para efetuar a busca (obrigatório)" required>
                 <small id="keyHelp" class="form-text text-muted mb-3">
                     Exemplo: Vancouver, Madrid, Oslo
                 </small>
             </div>
 
-            <button type="submit" class="btn btn-primary mb-4">Buscar</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark btn-lg mb-3"
+                    style="width: 150px; font-size: 1.4rem;">Buscar</button>
+            </div>
+
+            <hr class="mt-4 mb-4">
 
             {% if 'error' in items %}
-                <h1 class="text-center mb-2">Nenhum estabelecimento encontrado em {{ city }}</h1>
+            <h1 class="text-center mb-2">Nenhum estabelecimento encontrado em {{ city }}</h1>
 
-            {% elif busca and items.businesses|length < 1 %} 
-                <h1 class="text-center mb-2">Nada encontrado sobre o termo buscado</h1>
+            {% elif busca and items.businesses|length < 1 %} <h3 class="text-center mb-2">Nada encontrado sobre o
+                termo buscado
+                </h3>
 
-            {% elif city and items %}
-                <h1 class="mb-2">Resultado da busca</h1>
-                
-                <h5 class="mb-4">{{ termo }} - {{ city }}</h5>
+                {% elif city and items %}
+                <h3 class="text-center mb-2">Resultado da busca</h3>
+
+                <p class="text-center mb-4 lead">{{ termo }} - {{ city }}</p>
 
                 {% for biz in items.businesses %}
-                    <span class="text-info" id='city{{forloop.counter}}'>
-                        {{ biz.name}}, {{ city }}
-                    </span>
-                    <br />
+                <span class="text-info" id='city{{forloop.counter}}'>
+                    {{ biz.name}}, {{ city }} &nbsp;&nbsp;|&nbsp;&nbsp;
+                </span>
+
                 {% endfor %}
 
-            {% endif %}
+                {% endif %}
 
         </form>
     </div>
 
     {% if city and items|length > 1 %}
 
-        {% include 'maps.html' %}
+    {% include 'maps.html' %}
 
     {% endif %}
 
